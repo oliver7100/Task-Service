@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "./proto";
+
+message CreateTaskRequest {
+    string email = 1;
+}
+
+message CreateTaskResponse {
+    string email = 1;
+}
+
+message GetTaskRequest {
+    string email = 1; 
+}
+
+message GetTaskResponse {
+    string email = 1;
+}
+
+message GetTasksRequest {
+    string email = 1; 
+}
+
+message GetTasksResponse {
+    string email = 1;
+}
+
+service TaskService {
+    rpc Create(CreateTaskRequest) returns (CreateTaskResponse) {};
+    rpc GetTask(GetTaskRequest) returns (GetTaskResponse) {};
+    rpc GetTasks(GetTasksRequest) returns (GetTasksResponse) {};
+}
+
