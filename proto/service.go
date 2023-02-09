@@ -3,35 +3,27 @@ package proto
 import (
 	"context"
 
-	"github.com/users/oliver7100/user-service/database"
+	"github.com/oliver7100/task-service/database"
 )
 
 type service struct {
-	UnimplementedUserServiceServer
+	UnimplementedTaskServiceServer
 	Conn *database.Connection
 }
 
-func (*service) GetUser(ctx context.Context, req *GetUserRequest) (*CreateUserResponse, error) {
-	return &CreateUserResponse{}, nil
+func (s *service) Create(ctx context.Context, req *CreateTaskRequest) (*CreateTaskResponse, error) {
+	return nil, nil
 }
 
-func (s *service) CreateUser(ctx context.Context, req *CreateUserRequest) (*CreateUserResponse, error) {
-	var model database.User
-
-	model.Name = req.User.Name
-	model.Email = req.User.Email
-	model.Password = req.User.Password
-
-	if res := s.Conn.Instance.Create(&model); res.Error != nil {
-		return nil, res.Error
-	}
-
-	return &CreateUserResponse{
-		User: req.User,
-	}, nil
+func (s *service) GetTask(ctx context.Context, req *GetTaskRequest) (*GetTaskResponse, error) {
+	return nil, nil
 }
 
-func CreateNewService(conn *database.Connection) *service {
+func (s *service) GetTasks(ctx context.Context, req *GetTasksRequest) (*GetTasksResponse, error) {
+	return nil, nil
+}
+
+func NewTaskService(conn *database.Connection) *service {
 	return &service{
 		Conn: conn,
 	}

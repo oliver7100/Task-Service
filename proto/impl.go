@@ -3,6 +3,7 @@ package proto
 import "context"
 
 type IService interface {
-	CreateUser(context.Context, CreateUserRequest) (CreateUserResponse, error)
-	GetUser(context.Context, GetUserRequest) (CreateUserResponse, error)
+	Create(context.Context, CreateTaskRequest) (CreateTaskResponse, error)
+	GetTask(context.Context, GetTaskRequest) (GetTaskResponse, error)
+	GetTasks(context.Context, GetTasksRequest) (GetTasksResponse, error)
 }
